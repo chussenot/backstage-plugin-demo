@@ -89,4 +89,10 @@ COPY --chown=node:node app-config.yaml ./
 # This switches many Node.js dependencies to production mode.
 ENV NODE_ENV production
 
+# Define a build-time argument
+ARG BACKEND_SECRET=default_value
+
+# Set the environment variable to the value of the build-time argument
+ENV BACKEND_SECRET=$BACKEND_SECRET
+
 CMD ["node", "packages/backend", "--config", "app-config.yaml"]
