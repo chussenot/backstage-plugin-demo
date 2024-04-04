@@ -255,3 +255,4 @@ Several components within the `building-blocks` plugin have been refactored, ren
 ### app-config.production.yaml
 
 - Updates include backend authentication configuration, presumably to work with the `BACKEND_SECRET` environment variable set in the Dockerfile. This approach allows for secure and flexible configuration of the backend based on the environment it's deployed in.
+||||||| parent of 957613f (chore: Bootstrap the application )
