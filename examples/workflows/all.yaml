@@ -65,6 +65,6 @@ metadata:
         description: The path of the GitHub workflow file relative to the root of the repository.
         default: .github/workflows
 spec:
-  type: github-workflow2
+  type: github-workflow
   lifecycle: production
   owner: guests

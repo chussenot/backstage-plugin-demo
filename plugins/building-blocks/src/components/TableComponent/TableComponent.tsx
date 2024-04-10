@@ -75,6 +75,8 @@ export const TableComponent = () => {
       <Page>
         <Content>
           <Typography variant="h4">Workflows</Typography>
+          <br />
+          <Typography variant="body1">workflows found: {workflows.length}</Typography>  
           <table>
             <thead>
               <tr>
