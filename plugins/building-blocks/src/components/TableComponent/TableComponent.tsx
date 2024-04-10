@@ -1,16 +1,13 @@
-import React from 'react';
-import { Typography } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { useApi } from '@backstage/core-plugin-api';
-import { Page, Content, Progress } from '@backstage/core-components';
-import { useEffect, useState } from 'react';
+import { Page, Content, Progress, Table, TableColumn } from '@backstage/core-components';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { GitHubWorkflow } from '../../types';
 
 export const TableComponent = () => {
   const catalogApi = useApi(catalogApiRef);
   const [workflows, setWorkflows] = useState<GitHubWorkflow[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | undefined>();
 
   useEffect(() => {
@@ -36,7 +33,6 @@ export const TableComponent = () => {
 
     fetchWorkflows();
 
-    // Cleanup function to prevent setting state on unmounted component
     return () => {
       mounted = false;
     };
@@ -66,37 +62,28 @@ export const TableComponent = () => {
     return (
       <Page>
         <Content>
-          <Typography variant="body1">No workflows found</Typography>
-        </Content>
-      </Page>
-    );
-  } else {
-    return (
-      <Page>
-        <Content>
-          <Typography variant="h4">Workflows</Typography>
-          <br />
-          <Typography variant="body1">workflows found: {workflows.length}</Typography>  
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Tags</th>
-              </tr>
-            </thead>
-            <tbody>
-              {workflows.map(workflow => (
-                <tr key={workflow.metadata.name}>
-                  <td>{workflow.metadata.name}</td>
-                  <td>{workflow.spec.owner}</td>
-                  <td>{workflow.metadata.tags.join(', ')}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div>No workflows found</div>
         </Content>
       </Page>
     );
   }
+
+  const columns: TableColumn<GitHubWorkflow>[] = [
+    { title: 'Name', field: 'metadata.name' },
+    { title: 'Owner', field: 'spec.owner' },
+    { title: 'Tags', render: rowData => rowData.metadata.tags.join(', ') },
+  ];
+
+  return (
+    <Page>
+      <Content>
+        <Table
+          title={`Workflows (${workflows.length})`}
+          options={{ search: true, paging: true, pageSize: 10 }}
+          columns={columns}
+          data={workflows}
+        />
+      </Content>
+    </Page>
+  );
 };
