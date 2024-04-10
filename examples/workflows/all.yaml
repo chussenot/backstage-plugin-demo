@@ -1,0 +1,70 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: some-workflow
+  description: Reusable GitHub Actions workflow
+  tags:
+    - ci
+    - cd
+    - github-actions
+  links:
+    - url: https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
+      title: Reusing Workflows in GitHub Actions
+      icon: github
+      type: documentation
+    - url: https://github.com/your-org/common-github-workflows
+      title: Common GitHub Workflows Repository
+      icon: github
+      type: source-code
+  path: workflows
+  schema:
+    title: GitHub CI/CD Workflow Blocks
+    type: object
+    required:
+      - workflow_file_path
+    properties:
+      workflow_file_path:
+        title: Workflow File Path
+        type: string
+        description: The path of the GitHub workflow file relative to the root of the repository.
+        default: .github/workflows
+spec:
+  type: github-workflow
+  lifecycle: production
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: some-workflow2
+  description: Reusable GitHub Actions workflow
+  tags:
+    - ci
+    - cd
+    - github-actions
+  links:
+    - url: https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
+      title: Reusing Workflows in GitHub Actions
+      icon: github
+      type: documentation
+    - url: https://github.com/your-org/common-github-workflows
+      title: Common GitHub Workflows Repository
+      icon: github
+      type: source-code
+  path: workflows
+  schema:
+    title: GitHub CI/CD Workflow Blocks
+    type: object
+    required:
+      - workflow_file_path
+    properties:
+      workflow_file_path:
+        title: Workflow File Path
+        type: string
+        description: The path of the GitHub workflow file relative to the root of the repository.
+        default: .github/workflows
+spec:
+  type: github-workflow2
+  lifecycle: production
+  owner: guests

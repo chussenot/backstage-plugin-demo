@@ -94,6 +94,11 @@ catalog:
       rules:
         - allow: [User, Group]
 
+    - type: file
+      target: ../../examples/workflows/all.yaml
+      rules:
+        - allow: [Resource]
+
     ## Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
