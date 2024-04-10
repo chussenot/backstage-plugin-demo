@@ -11,7 +11,7 @@ import {
 } from '@backstage/core-components';
 import { TableComponent } from '../TableComponent';
 
-export const ExampleComponent = () => (
+export const MainComponent = () => (
   <Page themeId="tool">
     <Header title="CI Workflows" subtitle="Optional subtitle">
       <HeaderLabel label="Owner" value="Team X" />

@@ -16,7 +16,7 @@ export const BuildingBlocksPage = buildingBlocksPlugin.provide(
   createRoutableExtension({
     name: 'BuildingBlocksPage',
     component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+      import('./components/MainComponent').then(m => m.MainComponent),
     mountPoint: rootRouteRef,
   }),
 );
