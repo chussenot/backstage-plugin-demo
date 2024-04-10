@@ -18,7 +18,7 @@ export async function createRouter(
   });
 
   router.get('/building-blocks', async (_req, res) => {
-    res.send('blocks');
+    res.json(['block1', 'block2', 'block3']);
   });
 
   router.use(errorHandler(logger));
