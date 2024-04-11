@@ -61,3 +61,7 @@ create-plugin-backend:
 build:
 	@echo "VPN must be desactivated to properly build the image..."
 	docker image build . -f Dockerfile --tag $(DOCKER_IMAGE_NAME):latest
+
+# Run the image locally
+run:
+	docker run -it -p 7007:7007 $(DOCKER_IMAGE_NAME):latest
